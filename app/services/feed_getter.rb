@@ -5,6 +5,7 @@ class FeedGetter
 
   def feed
     StackExchangeConnection.new(tag).feed
+    TwitterConnection.new(tag).feed
   end
 
   private
