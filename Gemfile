@@ -15,6 +15,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'twitter'
 gem 'uglifier', '>= 1.3.0'
+gem 'yt', '~> 0.32.0'
 
 group :development, :test do
   gem 'pry-rails'
