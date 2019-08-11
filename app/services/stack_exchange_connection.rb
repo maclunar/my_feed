@@ -8,12 +8,26 @@ class StackExchangeConnection
   end
 
   def feed
-    self.class.get("/2.2/questions", options)
+    questions.map do |question|
+      {
+        source: 'stackoverflow',
+        title: question[:title],
+        published_at: Time.at(question[:creation_date]),
+        author: question[:owner][:display_name],
+        text: question[:title],
+        image: question[:owner][:profile_image],
+        url: question[:link]
+      }
+    end
   end
 
   private
 
   attr_reader :tag, :page
+
+  def questions
+    @questions ||=  self.class.get('/2.2/questions', options).deep_symbolize_keys[:items]
+  end
 
   def options
     @options ||= { query: { site: 'stackoverflow', page: page } }

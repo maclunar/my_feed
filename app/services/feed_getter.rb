@@ -4,9 +4,11 @@ class FeedGetter
   end
 
   def feed
-    StackExchangeConnection.new(tag).feed
-    TwitterConnection.new(tag).feed
-    YouTubeConnection.new(tag).feed
+    {
+      'stackexchange': StackExchangeConnection.new(tag).feed,
+      'twitter': TwitterConnection.new(tag).feed,
+      'youtube': YouTubeConnection.new(tag).feed
+    }
   end
 
   private

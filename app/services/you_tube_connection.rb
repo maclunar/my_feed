@@ -5,7 +5,17 @@ class YouTubeConnection
   end
 
   def feed
-    videos.where(q: tag, max_results: 10 * page)
+    videos.map do |video|
+      {
+        source: 'youtube',
+        title: video.title,
+        published_at: video.published_at,
+        author: video.channel_title,
+        text: video.description,
+        image: video.thumbnail_url('medium'),
+        url: 'https://youtu.be/' + video.id
+      }
+    end
   end
 
   private
@@ -13,6 +23,11 @@ class YouTubeConnection
   attr_reader :tag, :page
 
   def videos
-    @videos ||= Yt::Collections::Videos.new
+    configure_api_key
+    @videos ||= Yt::Collections::Videos.new.where(q: tag, max_results: 10 * page)
+  end
+
+  def configure_api_key
+    Yt.configuration.api_key = ENV['YOUTUBE_API_KEY']
   end
 end
