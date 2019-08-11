@@ -1,6 +1,5 @@
-<h1>Welcome to your feed!</h1>
+<%= render partial: 'partials/search' %>
 
-<h3>Type the tag!</h3>
+<h2>Here are your results:</h2>
 
-<input type="text" name="tag-input">
-<input type="submit" value="Get it!">
+<%= @feed.to_s %>

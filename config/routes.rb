@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'home#feed'
+  get 'feed', to: 'home#feed'
+  root 'home#welcome'
 end
