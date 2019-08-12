@@ -3,7 +3,7 @@ class FeedGetter
     @tag = params[:tag]
   end
 
-  def feed
+  def feeds
     {
       'stackexchange': StackExchangeConnection.new(tag).feed,
       'twitter': TwitterConnection.new(tag).feed,

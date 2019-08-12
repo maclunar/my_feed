@@ -26,10 +26,10 @@ class StackExchangeConnection
   attr_reader :tag, :page
 
   def questions
-    @questions ||=  self.class.get('/2.2/questions', options).deep_symbolize_keys[:items]
+    @questions ||=  self.class.get('/2.2/search', options).deep_symbolize_keys[:items]
   end
 
   def options
-    @options ||= { query: { site: 'stackoverflow', page: page } }
+    @options ||= { query: { site: 'stackoverflow', tagged: tag, page: page, pagesize: 10 } }
   end
 end

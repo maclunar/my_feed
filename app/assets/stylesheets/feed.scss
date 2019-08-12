@@ -1,0 +1,30 @@
+.feed {
+  background-color: #eee;
+  padding: 20px 40px;
+  color: #555;
+  position: relative;
+  border: solid 2px;
+  margin-bottom: 20px;
+
+  h2 {
+    color: black;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    margin-left: -40px;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .entry {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    .author {
+      color: black;
+    }
+  }
+}

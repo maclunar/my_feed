@@ -1,0 +1,17 @@
+<div class="feed <%= feed.first %>">
+  <h2><%= feed.first.to_s.capitalize %></h2>
+  <hr>
+  <% if feed.second.blank? %>
+    <p class="feed-empty">No results for that tag! 🤷‍♀️</p>
+  <% else %>
+    <ul>
+      <% feed.second.each do |entry| %>
+        <li class="entry">
+          <strong><%= link_to entry[:title], entry[:url] %></strong><br>
+          by <i class="author"><%= entry[:author] %></i>,
+          published at <span class="date"><%= entry[:published_at].strftime("%H:%M, %F") %></span><br>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

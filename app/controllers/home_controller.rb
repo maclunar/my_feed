@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def welcome; end
 
   def feed
-    @feed = FeedGetter.new(feed_params).feed
+    @feeds = FeedGetter.new(feed_params).feeds
   end
 
   private
