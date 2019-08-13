@@ -1,9 +1,4 @@
-class TwitterConnection
-  def initialize(tag, page = 1)
-    @tag = tag
-    @page = page.to_i
-  end
-
+class TwitterConnection < BaseConnection
   def feed
     tweets.map do |tweet|
       {

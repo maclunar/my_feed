@@ -1,9 +1,4 @@
-class YouTubeConnection
-  def initialize(tag, page = 1)
-    @tag = tag
-    @page = page.to_i
-  end
-
+class YoutubeConnection < BaseConnection
   def feed
     videos.map do |video|
       {

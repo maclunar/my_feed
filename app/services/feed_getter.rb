@@ -5,9 +5,9 @@ class FeedGetter
 
   def feeds
     {
-      'stackexchange': StackExchangeConnection.new(tag).feed,
+      'stackoverflow': StackoverflowConnection.new(tag).feed,
       'twitter': TwitterConnection.new(tag).feed,
-      'youtube': YouTubeConnection.new(tag).feed
+      'youtube': YoutubeConnection.new(tag).feed
     }
   end
 

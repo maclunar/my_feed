@@ -27,6 +27,9 @@ Metrics/BlockLength:
     - 'spec/**/*'
     - 'app/models/**/*'
 
+Metrics/MethodLength:
+  Max: 20
+
 RSpec/DescribeClass:
   Enabled: false
 
