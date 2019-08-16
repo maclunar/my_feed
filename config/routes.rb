@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  get 'feed', to: 'home#feed'
-  root 'home#welcome'
+  resource :feeds, only: [:new, :show]
+
+  root 'feeds#new'
 end
