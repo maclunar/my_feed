@@ -1,5 +1,5 @@
-class YoutubeConnection < BaseConnection
-  def feed
+class YoutubeFeedFetcher < BaseFeedFetcher
+  def call
     videos.map do |video|
       {
         source: 'youtube',

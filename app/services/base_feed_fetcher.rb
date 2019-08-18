@@ -1,11 +1,11 @@
-class BaseConnection
+class BaseFeedFetcher
   class NotImplementedInSubclass < StandardError; end
   def initialize(tag, page = 1)
     @tag = tag
     @page = page.to_i
   end
 
-  def feed
+  def call
     raise NotImplementedInSubclass
   end
 end

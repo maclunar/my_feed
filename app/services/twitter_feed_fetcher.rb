@@ -1,5 +1,5 @@
-class TwitterConnection < BaseConnection
-  def feed
+class TwitterFeedFetcher < BaseFeedFetcher
+  def call
     tweets.map do |tweet|
       {
         source: 'twitter',

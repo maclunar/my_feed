@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
   def new; end
 
   def show
-    @feeds = FeedGetter.new(feed_params.to_h).feeds
+    @feeds = FeedGetter.new(feed_params.to_h).call
   end
 
   private

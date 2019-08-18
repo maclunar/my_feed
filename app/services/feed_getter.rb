@@ -4,7 +4,7 @@ class FeedGetter
     @sources = selected_sources(params[:sources])
   end
 
-  def feeds
+  def call
     retrieved_feeds = {}
 
     sources.each do |source|
@@ -23,6 +23,6 @@ class FeedGetter
   end
 
   def retrieve_feed(source)
-    "#{source.capitalize}Connection".constantize.new(tag).feed
+    "#{source.capitalize}FeedFetcher".constantize.new(tag).call
   end
 end

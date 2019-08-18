@@ -1,5 +1,5 @@
-class StackoverflowConnection < BaseConnection
-  def feed
+class StackoverflowFeedFetcher < BaseFeedFetcher
+  def call
     questions.map do |question|
       {
         source: 'stackoverflow',
