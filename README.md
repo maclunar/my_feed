@@ -1,24 +1,18 @@
-# README
+# my_feed
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple Rails app to retrieve feeds from chosen sources, filtered by a keyword.
 
-Things you may want to cover:
+It is very much a work in progress.
 
-* Ruby version
+## Supported sources:
 
-* System dependencies
+* StackOverflow
+* Twitter
+* YouTube
 
-* Configuration
+## TODO
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [ ] specs
+- [ ] pagination
+- [ ] about/contact page
+- [ ] layout improvements
