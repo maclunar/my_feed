@@ -1,15 +1,18 @@
-<%= form_tag(feeds_path, method: "get") do %>
-  <%= label_tag(:q, "Your tag of choice:") %>
-  <%= text_field_tag :tag %>
+<%#= form_tag(feeds_path, method: "get") do %>
+<%= form_for :feed, url: feeds_path, method: :get do |feed_form| %>
+  <%= feed_form.label :tag, "Your tag of choice:" %>
+  <%= feed_form.text_field :tag %>
   <br>
-  <%= check_box_tag :'sources[stackoverflow]' %>
-  <%= label_tag :stackoverflow %>
-  <br>
-  <%= check_box_tag :'sources[twitter]' %>
-  <%= label_tag :twitter %>
-  <br>
-  <%= check_box_tag :'sources[youtube]' %>
-  <%= label_tag :youtube %>
-  <br>
-  <%= submit_tag("Search") %>
+  <%= feed_form.fields_for :sources do |sources_form| %>
+    <%= sources_form.check_box :stackoverflow %>
+    <%= sources_form.label :stackoverflow %>
+    <br>
+    <%= sources_form.check_box :twitter %>
+    <%= sources_form.label :twitter %>
+    <br>
+    <%= sources_form.check_box :youtube %>
+    <%= sources_form.label :youtube %>
+    <br>
+  <% end %>
+  <%= feed_form.submit "Search" %>
 <% end %>
