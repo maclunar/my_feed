@@ -8,6 +8,6 @@ class FeedsController < ApplicationController
   private
 
   def feed_params
-    params.require(:feed).permit(:tag, sources: [:twitter, :stackoverflow, :youtube])
+    params.require(:feed).permit(:tag, sources: %i[twitter stackoverflow youtube])
   end
 end
