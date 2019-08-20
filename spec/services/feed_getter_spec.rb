@@ -17,19 +17,23 @@ describe FeedGetter do
   let(:twitter_connection) { instance_double(TwitterFeedFetcher) }
   let(:youtube_connection) { instance_double(YoutubeFeedFetcher) }
 
+  let(:stackoverflow_feed) { { source: 'stackoverflow' } }
+  let(:twitter_feed) { { source: 'twitter' } }
+  let(:youtube_feed) { { source: 'youtube' } }
+
   before do
     allow(StackoverflowFeedFetcher).to receive(:new).with(tag_param).and_return(stackoverflow_connection)
     allow(TwitterFeedFetcher).to receive(:new).with(tag_param).and_return(twitter_connection)
     allow(YoutubeFeedFetcher).to receive(:new).with(tag_param).and_return(youtube_connection)
 
-    allow(stackoverflow_connection).to receive(:call).and_return({ source: 'stackoverflow' })
-    allow(twitter_connection).to receive(:call).and_return({ source: 'twitter' })
-    allow(youtube_connection).to receive(:call).and_return({ source: 'youtube' })
+    allow(stackoverflow_connection).to receive(:call).and_return(stackoverflow_feed)
+    allow(twitter_connection).to receive(:call).and_return(twitter_feed)
+    allow(youtube_connection).to receive(:call).and_return(youtube_feed)
   end
 
   context 'when no sources selected' do
     it 'returns empty hash' do
-      expect(getter.call).to eq({})
+      expect(getter.call).to be_blank
     end
   end
 
@@ -42,9 +46,9 @@ describe FeedGetter do
       }
     end
 
-    it 'returns stackoverflow and youtube feeds' do
+    it 'returns twitter feed' do
       expect(getter.call).to eq(
-        "twitter" => { source: "twitter" }
+        'twitter' => twitter_feed
       )
     end
   end
@@ -60,9 +64,9 @@ describe FeedGetter do
 
     it 'returns stackoverflow and youtube feeds' do
       expect(getter.call).to eq(
-                               "stackoverflow" => { source: "stackoverflow" },
-                               "youtube" => { source: "youtube" }
-                             )
+        'stackoverflow' => stackoverflow_feed,
+        'youtube' => youtube_feed
+      )
     end
   end
 end
