@@ -25,6 +25,6 @@ class FeedGetter
   end
 
   def retrieve_feed(source)
-    "#{source.capitalize}FeedFetcher".constantize.new(tag).call
+    "FeedFetcher::#{source.capitalize}".constantize.new(tag).call
   end
 end

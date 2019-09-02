@@ -13,18 +13,18 @@ describe FeedGetter do
   let(:tag_param) { 'ruby' }
   let(:sources_param) {}
 
-  let(:stackoverflow_connection) { instance_double(StackoverflowFeedFetcher) }
-  let(:twitter_connection) { instance_double(TwitterFeedFetcher) }
-  let(:youtube_connection) { instance_double(YoutubeFeedFetcher) }
+  let(:stackoverflow_connection) { instance_double(FeedFetcher::Stackoverflow) }
+  let(:twitter_connection) { instance_double(FeedFetcher::Twitter) }
+  let(:youtube_connection) { instance_double(FeedFetcher::Youtube) }
 
   let(:stackoverflow_feed) { { source: 'stackoverflow' } }
   let(:twitter_feed) { { source: 'twitter' } }
   let(:youtube_feed) { { source: 'youtube' } }
 
   before do
-    allow(StackoverflowFeedFetcher).to receive(:new).with(tag_param).and_return(stackoverflow_connection)
-    allow(TwitterFeedFetcher).to receive(:new).with(tag_param).and_return(twitter_connection)
-    allow(YoutubeFeedFetcher).to receive(:new).with(tag_param).and_return(youtube_connection)
+    allow(FeedFetcher::Stackoverflow).to receive(:new).with(tag_param).and_return(stackoverflow_connection)
+    allow(FeedFetcher::Twitter).to receive(:new).with(tag_param).and_return(twitter_connection)
+    allow(FeedFetcher::Youtube).to receive(:new).with(tag_param).and_return(youtube_connection)
 
     allow(stackoverflow_connection).to receive(:call).and_return(stackoverflow_feed)
     allow(twitter_connection).to receive(:call).and_return(twitter_feed)

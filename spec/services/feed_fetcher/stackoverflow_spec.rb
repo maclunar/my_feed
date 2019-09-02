@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe StackoverflowFeedFetcher do
+describe FeedFetcher::Stackoverflow do
   subject(:fetcher) { described_class.new(tag, page) }
 
   let(:tag) {}
