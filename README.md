@@ -12,7 +12,7 @@ It is very much a work in progress.
 
 ## TODO
 
-- [ ] specs
+- [x] specs
 - [ ] pagination
 - [ ] about/contact page
 - [ ] layout improvements
