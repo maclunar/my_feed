@@ -22,6 +22,8 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
